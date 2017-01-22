@@ -6,7 +6,7 @@
 }
 .content-block{
 	width: 100%;
-	padding-top: 7.87rem;
+	/*padding-top: 7.87rem;*/
 	margin: 0;
 }
 
@@ -15,6 +15,8 @@
 	margin-top: 0;
 }
 .row1{
+	position: relative;
+	top: 4.5rem;
 	margin: auto;
 	text-align: center;
 	width: 14rem;
@@ -27,7 +29,9 @@
 	padding-top: 1.5rem;
 	font-size: 3.6rem;
 }
-
+.row2{
+	padding-top: 8rem;
+}
 .col-33{
 	padding-left: 4%;
 }
@@ -39,11 +43,17 @@
 }
 .row3{
 		margin: auto;
-		padding-top: 0.5rem;
+		padding-top: 1.5rem;
 	}
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 	.content-block{
 		padding-top: 1rem;
+	}
+	.row1{
+		position: static;
+	}
+	.row2{
+		padding-top: 0;
 	}
 	.box{
 		height: 20rem;

@@ -91,5 +91,9 @@ $(function() {
     }
   ]
 });
+    var width=document.documentElement.clientWidth;
+    var set_width=(width/375)*20;
+    var root=document.documentElement;
+    root.style.cssText="font-size:"+set_width+'px'+'!important';
     $.init();
 });
