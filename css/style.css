@@ -1,0 +1,73 @@
+/*Head Common*/
+
+/*头部公共样式*/
+.bar-nav {
+    text-align: center;
+    background-color: #000;
+}
+.bar-nav a {
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #E1E1E3;
+}
+/*Tool Common*/
+/*工具栏公共样式*/
+.tab-item {
+    font-family: 'PingFangSC-Regular', 'PingFang SC';
+    border: 0.05rem solid #DFDFDF;
+}
+.tab-item span {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #333333;
+}
+/*content Common*/
+/*内容公共样式*/
+.title,
+.secondary-title {
+    font-family: '微软雅黑 Bold', '微软雅黑';
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #DFDFDF;
+}
+.secondary-title {
+    display: inline-block;
+    padding-top: 0.4rem;
+    font-size: 0.5rem;
+}
+.button-success.button-fill,
+dt {
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    font-weight: 400;
+    font-size: 0.7rem;
+}
+dd {
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    font-weight: 400;
+    font-size: 0.6rem;
+    color: #999;
+}
+.button-success.button-fill {
+    background-color: #1ba365;
+}
+.title-block {
+    text-align: center;
+}
+.list-block {
+    margin: 0;
+}
+.list-block li {
+    border-bottom: 0.05rem solid #DFDFDF;
+}
+.list-block li a {
+    color: #000;
+}
+.item-title h6 {
+    margin: 0;
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    font-weight: 400;
+    font-size: 0.5rem;
+    color: #999;
+}
+    
