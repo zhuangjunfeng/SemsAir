@@ -6,7 +6,6 @@
 }
 .content-block{
 	width: 100%;
-	/*padding-top: 7.87rem;*/
 	margin: 0;
 }
 
@@ -43,7 +42,7 @@
 }
 .row3{
 		margin: auto;
-		padding-top: 1.5rem;
+		/*padding-top: 1.5rem;*/
 	}
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 	.content-block{

@@ -91,9 +91,44 @@ $(function() {
     }
   ]
 });
-    var width=document.documentElement.clientWidth;
-    var set_width=(width/375)*20;
-    var root=document.documentElement;
-    root.style.cssText="font-size:"+set_width+'px'+'!important';
+    !(function(win, doc){
+        // 设定字体大小
+    function setFontSize() {
+        var winWidth =  window.innerWidth;
+        var size = (winWidth / 375) * 20;
+        doc.documentElement.style.cssText = 'font-size:' +(size < 16 ? 16 : size) + 'px'+'!important' ;
+    }
+    function setPadding(){
+        var winHeight = window.innerHeight;
+        var paddingTop =(winHeight/667)*1.5;
+        var row= doc.getElementsByName("button-group");
+       row[0].style.cssText='padding-top:'+paddingTop+'rem';
+    }
+    var evt = 'onorientationchange' in win ? 'orientationchange' : 'resize';
+    var timer = null;
+    win.addEventListener(evt, function () {
+        clearTimeout(timer);
+        timer = setTimeout(setFontSize, 300);
+    }, false);
+    win.addEventListener("pageshow", function(e) {
+        if (e.persisted) {
+            clearTimeout(timer);
+            timer = setTimeout(setFontSize, 300);
+        }
+    }, false);
+     win.addEventListener(evt, function () {
+        clearTimeout(timer);
+        timer = setTimeout(setPadding, 300);
+    }, false);
+    win.addEventListener("pageshow", function(e) {
+        if (e.persisted) {
+            clearTimeout(timer);
+            timer = setTimeout(setPadding, 300);
+        }
+    }, false);
+    // 初始化
+    setFontSize();
+    setPadding();
+}(window, document));
     $.init();
 });
