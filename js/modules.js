@@ -1,140 +1,76 @@
 $(function() {
+    // 模态窗设定
     $(document).on('click', '.create-actions', function() {
         var buttons1 = [{
             text: '解绑后需要重新绑定设备才能继续控制设备',
             label: true,
         }];
-        var buttons2 =[{
-            text:'解绑此设备',
-            bg:'danger'
+        var buttons2 = [{
+            text: '解绑此设备',
+            bg: 'danger'
         }];
         var buttons3 = [{
             text: '取消',
         }];
-        var groups = [buttons1, buttons2,buttons3];
+        var groups = [buttons1, buttons2, buttons3];
         $.actions(groups);
     });
-    $(document).on("pageInit", "#page-ptr", function(e, id, page) {
-        var $content = $(page).find(".content").on('refresh', function(e) {
-            // 模拟2s的加载过程
-            setTimeout(function() {
-                var cardHTML = '<div class="card">' +
-                    '<div class="card-header">标题</div>' +
-                    '<div class="card-content">' +
-                    '<div class="card-content-inner">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
-
-                $content.find('.row4').prepend(cardHTML);
-                // $(window).scrollTop(0);
-                // 加载完毕需要重置
-                $.pullToRefreshDone($content);
-            }, 0);
-        });
-    });
-    $(document).on("pageInit", "#page-infinite-scroll-bottom", function(e, id, page) {
-        var loading = false;
-        // 每次加载添加多少条目
-        var itemsPerLoad = 20;
-        // 最多可加载的条目
-        var maxItems = 100;
-        var lastIndex = $('.list-container li').length;
-
-        function addItems(number, lastIndex) {
-            // 生成新条目的HTML
-            var html = '';
-            for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
-                html += '<li class="item-content"><div class="item-inner"><div class="item-title">新条目'+i+'</div></div></li>';
-            }
-            // 添加新条目
-            $('.infinite-scroll .list-container').append(html);
-        }
-         addItems(itemsPerLoad, 0);
-         var lastIndex = 20;
-        $(page).on('infinite', function() {
-            // 如果正在加载，则退出
-            if (loading) return;
-            // 设置flag
-            loading = true;
-            // 模拟1s的加载过程
-            setTimeout(function() {
-                // 重置加载flag
-                loading = false;
-                if (lastIndex >= maxItems) {
-                    // 加载完毕，则注销无限加载事件，以防不必要的加载
-                    $.detachInfiniteScroll($('.infinite-scroll'));
-                    // 删除加载提示符
-                    $('.infinite-scroll-preloader').remove();
-                    return;
-                }
-                addItems(itemsPerLoad, lastIndex);
-                // 更新最后加载的序号
-                lastIndex = $('.list-container li').length;
-                $.refreshScroller();
-            }, 1000);
-        });
-    });
-    $(document).on('click', '.toast', function() {
-        $.toast("操作失败");
-    });
-    $(".picker").picker({
-  toolbarTemplate: '<header class="bar bar-nav">\
-  <button class="button button-link pull-left close-picker">取消</button>\
-  <button class="button button-link pull-right close-picker">确定</button>\
-  <h1 class="title">标题</h1>\
-  </header>',
-  cols: [
-    {
-      textAlign: 'center',
-      values: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2', 'iPad Retina', 'iPad Air', 'iPad mini', 'iPad mini 2', 'iPad mini 3']
-    }
-  ]
-}); 
     // 动态设定根元素字体大小
-    !(function(win, doc){
-    function setFontSize() {
-        var winWidth =  window.innerWidth;
-        var size = (winWidth / 375) * 20;
-        doc.documentElement.style.cssText = 'font-size:' +(size < 16 ? 16 : size) + 'px'+'!important' ;
+    !(function(win, doc) {
+        function setFontSize() {
+            // 获取屏幕宽度
+            var winWidth = window.innerWidth;
+            // 计算字体大小
+            var size = (winWidth / 375) * 20;
+            doc.documentElement.style.cssText = 'font-size:' + (size < 16 ? 16 : size) + 'px' + '!important';
+        }
+        var evt = 'onorientationchange' in win ? 'orientationchange' : 'resize';
+        var timer = null;
+        // 监听横竖屏切换以及缩放屏幕时执行设置字体大小方法,延迟时间是100ms
+        win.addEventListener(evt, function() {
+            clearTimeout(timer);
+            timer = setTimeout(setFontSize, 100);
+        }, false);
+        // 监听页面加载事件执行字体设置方法,延迟时间是100ms
+        win.addEventListener("pageshow", function(e) {
+            if (e.persisted) {
+                clearTimeout(timer);
+                timer = setTimeout(setFontSize, 100);
+            }
+        }, false);
+        // 初始化
+        setFontSize();
+    }(window, document));
+    // 动态设定内边距高度
+    judgeHeight(window, document);
+    $.init();
+});
+// 动态设定内边距高度方法 
+function judgeHeight(win, doc) {
+    function setPadding() {
+        // 获取屏幕高度
+        var winHeight = window.innerHeight;
+        // 计算内边距高度
+        var paddingTop = (winHeight / 667) * 3;
+        // 获取元素
+        var row = doc.getElementsByName("button-group");
+        // 设定内边距高度
+        row[0].style.cssText = 'padding-top:' + (paddingTop < 3 ? paddingTop : 3) + 'rem';
     }
     var evt = 'onorientationchange' in win ? 'orientationchange' : 'resize';
     var timer = null;
-    win.addEventListener(evt, function () {
+    // 监听横竖屏切换以及缩放屏幕时执行设置内边距高度方法,延迟时间是100ms
+    win.addEventListener(evt, function() {
         clearTimeout(timer);
-        timer = setTimeout(setFontSize, 100);
+        timer = setTimeout(setPadding, 100);
     }, false);
+    // 监听页面加载事件，执行内边距高度设置方法,延迟时间是100ms
     win.addEventListener("pageshow", function(e) {
         if (e.persisted) {
             clearTimeout(timer);
-            timer = setTimeout(setFontSize, 100);
+            timer = setTimeout(setPadding, 100);
         }
     }, false);
-    setFontSize();
-}(window, document));
-
-judgeHeight(window,document);
-    $.init();
-});
-// 动态设定内边距高度
-function judgeHeight(win,doc){
-      function setPadding(){
-        var winHeight = window.innerHeight;
-        var paddingTop =(winHeight/667)*3;
-        var row= doc.getElementsByName("button-group");
-       row[0].style.cssText='padding-top:'+(paddingTop < 3 ? paddingTop : 3)+'rem';
-   }
-        var evt = 'onorientationchange' in win ? 'orientationchange' : 'resize';
-        var timer = null;
-    win.addEventListener(evt, function () {
-        clearTimeout(timer);
-        timer = setTimeout(setPadding, 300);
-    }, false);
-    win.addEventListener("pageshow", function(e) {
-        if (e.persisted) {
-            clearTimeout(timer);
-            timer = setTimeout(setPadding, 300);
-        }
-    }, false);
-      setPadding();
+    // 初始化
+    setPadding();
 }
