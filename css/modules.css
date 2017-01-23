@@ -1,11 +1,10 @@
 
-.box{
-	width: 100%;
-	height: 26.15rem;
-	background-color: #1ba365;
+.empty{
+	padding: 2rem 0;
 }
 .content-block{
 	width: 100%;
+	background-color: #1ba365;
 	margin: 0;
 }
 
@@ -14,8 +13,6 @@
 	margin-top: 0;
 }
 .row1{
-	position: relative;
-	top: 4.5rem;
 	margin: auto;
 	text-align: center;
 	width: 14rem;
@@ -29,7 +26,8 @@
 	font-size: 3.6rem;
 }
 .row2{
-	padding-top: 8rem;
+	display: block;
+	padding-top: 4rem;
 }
 .col-33{
 	padding-left: 4%;
@@ -39,10 +37,9 @@
 	font-weight: 400;
 	color: #FFF;
 	width: 5rem;
-}
-.row3{
+}	
+.row2,.row3{
 		margin: auto;
-		/*padding-top: 1.5rem;*/
 	}
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 	.content-block{
