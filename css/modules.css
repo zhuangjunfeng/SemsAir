@@ -4,7 +4,7 @@
 
 .content-block {
     width: 100%;
-    background-color: #1ba365;
+    background-color: #888686;
     margin: 0;
 }
 
@@ -69,7 +69,7 @@
     border-radius: 50%;
 }
 /*圆形2*/
-.circular span {
+.circular a {
     display: block;
     padding-top: 0.75rem;
     font-family: '微软雅黑 Regular', '微软雅黑';
@@ -80,4 +80,40 @@
 .circular .iconfont {
     padding-top: 0.25rem;
     font-size: 1.25rem;
+}
+/*各种状态的类写在这里*/
+/*设备开启状态下，车内空气质量良好*/
+.device-on.excellent{
+    background-color: #1ba365;
+}
+/*设备开启状态下车内空气中等*/
+.device-on.medium{
+    background-color: #e4cb2b;
+}
+/*设备开启，空气差*/
+.device-on.warning{
+	background-color: #d60000;
+}
+/*设备关闭*/
+.device-off{
+	background-color: #888686;
+}
+/*允许操作*/
+.enable{
+	background-color: #1ba365;
+	border-color: #1ba365;
+}
+.enable a{
+	color: #fff;
+}
+.enable:active{
+	opacity: 0.9;
+}
+/*不允许操作*/
+.disable{
+	background-color: #888686;
+	border-color: #888686;
+}
+.disable a{
+	color: #000;
 }
