@@ -6,6 +6,7 @@
     width: 100%;
     background-color: #888686;
     margin: 0;
+    padding: 0;
 }
 
 .row1 {
@@ -48,7 +49,6 @@
     font-family: '微软雅黑 Regular', '微软雅黑';
     font-weight: 400;
     color: #FFF;
-    width: 5rem;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -60,27 +60,24 @@
     }
 }
 /*形状盒子*/
-/*/圆形1*/
+/*/圆形*/
 .circular {
-    width: 2.5rem;
+    display: block;
+	width: 2.5rem;
     height: 2.5rem;
+    padding-top: 0.6rem;
+    font-family: '微软雅黑 Regular', '微软雅黑';
     text-align: center;
+    color: #bcbcbc;
     border: 0.05rem solid #bcbcbc;
     border-radius: 50%;
 }
-/*圆形2*/
-.circular a {
-    display: block;
-    padding-top: 0.75rem;
-    font-family: '微软雅黑 Regular', '微软雅黑';
-    font-size: 0.6rem;
-    color: #bcbcbc;
-}
 /*字体图标大小调整*/
-.circular .iconfont {
+.iconfont{
     padding-top: 0.25rem;
     font-size: 1.25rem;
 }
+
 /*各种状态的类写在这里*/
 /*设备开启状态下，车内空气质量良好*/
 .device-on.excellent{
@@ -101,19 +98,15 @@
 /*允许操作*/
 .enable{
 	background-color: #1ba365;
-	border-color: #1ba365;
-}
-.enable a{
 	color: #fff;
+	border-color: #1ba365;
 }
 .enable:active{
 	opacity: 0.9;
 }
 /*不允许操作*/
 .disable{
+	color: #000;
 	background-color: #888686;
 	border-color: #888686;
-}
-.disable a{
-	color: #000;
 }

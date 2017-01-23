@@ -4,17 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>设备监控</title>
+    <!-- viewport:设定初始缩放倍数，最大缩放倍数等属性的标签 -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <!-- 引入iconfont远端链接 -->
     <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_xopskss0wscq5mi.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css?112318">
     <link rel="stylesheet" type="text/css" href="css/modules.css?112318">
 </head>
 <body>
     <div class="page page-current">
-        <!-- 标题栏 -->
         <div class="content">
-            <div class="content-block"><!-- 设备开启类名：device-on，关闭：device-off 状态类：excellent/medium/warning 好/中等/差-->
+        <!-- 设备开启类名：device-on，关闭：device-off 状态类：excellent/medium/warning 好/中等/差。 添加至content-block块。-->
+            <div class="content-block">
+            <!-- empty类用于撑开conten-block，类似于padding-top -->
                 <div class="empty"></div>
                 <div class="row row1">
                     <h1>---</h1>
@@ -31,34 +33,28 @@
                         <p>滤网:--</p>
                     </div>
                     <div class="col-33">
-                        <p>电量:---</p>
+                        <p>电量:--</p>
                     </div>
                 </div>
             </div>
             <div class="button-box">
+            <!-- 按钮组，name属性用于原生JS获取row3这个盒子 -->
                 <div class="row row3" name="button-group">
                     <div class="col-25">
-                        <div class="circular enable">
-                            <a href="#" class="iconfont icon-dianyuan"></a>
-                        </div>
+                            <a href="#" class="circular enable iconfont icon-dianyuan"></a><!-- enable:可操作元素 -->
                     </div>
                     <div class="col-25">
-                        <div class="circular disable">
-                            <a href="#">AUTO</a>
-                        </div>
+                            <a href="#" class="circular disable">AUTO</a>
                     </div>
                     <div class="col-25">
-                        <div class="circular">
-                            <a href="#" class="iconfont icon-dianyuan"></a>
+                            <a href="#" class="circular iconfont icon-dianyuan"></a>
                         </div>
-                    </div>
                     <div class="col-25">
-                        <div class="circular">
-                            <a href="#" class="iconfont icon-33 "></a>
-                        </div>
+                            <a href="#" class="circular iconfont icon-33 "></a>
                     </div>
                 </div>
             </div>
+            <!-- row4用于存放第二排隐藏按钮 -->
             <div class="row row4">
             </div>
         </div>
